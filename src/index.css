@@ -1,0 +1,323 @@
+@import "tailwindcss";
+
+/* ========================================
+   DESIGN SYSTEM — Women's Boutique
+   Elegant, Feminine & Premium
+   ======================================== */
+
+:root {
+  /* Primary Palette — Rose Gold & Champagne */
+  --color-primary: #2d2d2d;
+  --color-primary-light: #4a4a4a;
+  --color-accent: #b76e79;
+  --color-accent-light: #d4929b;
+  --color-accent-dark: #a35d68;
+  --color-champagne: #d4a373;
+  --color-champagne-light: #e8c4a0;
+  
+  /* Neutral Palette — Warm Tones */
+  --color-bg: #fdf8f5;
+  --color-bg-warm: #f8e8e0;
+  --color-surface: #ffffff;
+  --color-border: #f0e6df;
+  --color-border-light: #f7f0eb;
+  --color-text: #2d2d2d;
+  --color-text-secondary: #8a7e78;
+  --color-text-muted: #b5aca6;
+  
+  /* Accent Colors */
+  --color-success: #6b9e7d;
+  --color-danger: #c97070;
+  --color-info: #7da3c9;
+  
+  /* Shadows — Warm tinted */
+  --shadow-sm: 0 1px 3px rgba(183, 110, 121, 0.04), 0 1px 2px rgba(45, 45, 45, 0.03);
+  --shadow-md: 0 4px 16px rgba(183, 110, 121, 0.06), 0 1px 4px rgba(45, 45, 45, 0.04);
+  --shadow-lg: 0 10px 40px rgba(183, 110, 121, 0.08), 0 2px 8px rgba(45, 45, 45, 0.04);
+  --shadow-xl: 0 20px 60px rgba(183, 110, 121, 0.1), 0 4px 16px rgba(45, 45, 45, 0.05);
+  --shadow-rose: 0 4px 20px rgba(183, 110, 121, 0.15);
+  
+  /* Typography */
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv11', 'ss01';
+  
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(183, 110, 121, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(183, 110, 121, 0.2); }
+}
+
+@keyframes slideInFromRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s var(--ease-out-expo);
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s var(--ease-out-expo);
+}
+
+.animate-slideUp {
+  animation: slideUp 0.5s var(--ease-out-expo);
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slideInFromRight {
+  animation: slideInFromRight 0.25s ease-out both;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #f8e8e0 25%, #f0e6df 50%, #f8e8e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Staggered animations for grid items */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+.stagger-7 { animation-delay: 0.35s; }
+.stagger-8 { animation-delay: 0.4s; }
+
+/* ========================================
+   MODAL ANIMATIONS
+   ======================================== */
+
+.modal-overlay {
+  animation: overlayFadeIn 0.2s ease-out;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 10px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ========================================
+   SELECTION COLOR
+   ======================================== */
+
+::selection {
+  background-color: rgba(183, 110, 121, 0.2);
+  color: var(--color-primary);
+}
+
+/* ========================================
+   PRODUCT CARD HOVER EFFECTS
+   ======================================== */
+
+.product-card {
+  transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.product-card .product-image {
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-card .product-action {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.product-card:hover .product-action {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   BADGE STYLES
+   ======================================== */
+
+.badge-rose {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.badge-gold {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.badge-dark {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* ========================================
+   BUTTON STYLES
+   ======================================== */
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+  color: #ffffff;
+  font-weight: 600;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.btn-accent:hover {
+  box-shadow: var(--shadow-rose);
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   SECTION REVEAL (Intersection Observer)
+   ======================================== */
+
+.reveal-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s var(--ease-out-expo);
+}
+
+.reveal-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
